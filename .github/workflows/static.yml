@@ -15,20 +15,14 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
-      # Must be set to this for deploying to GitHub Pages
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: macos-12
     steps:
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload only docs directory
-          path: 'docs'
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages 🐙
         id: deployment
         uses: actions/deploy-pages@v1
